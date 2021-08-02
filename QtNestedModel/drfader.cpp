@@ -22,7 +22,7 @@ void DrFader::syncParams()
     _rmax = std::max(_min,_max);
     _sensinverse = _rmin != _min;
     _dist = std::abs(_rmax-_rmin);
-    _changementdesigne = (_min<0 && _max >0) || (_min>0 && _max <0);
+    _changementdesigne = bool(((_min<0) && (_max >0)) || ((_min>0) && (_max <0)));
 
     //_rel0 est la distance par rapport au minimum
     if(!_changementdesigne){
