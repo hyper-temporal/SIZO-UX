@@ -1,7 +1,7 @@
 #include "drgraphitemselector.h"
 
 OndeGrapheRessource::OndeGrapheRessource()
-    : color(qrand() % 256, qrand() % 256, qrand() % 256)
+    : color(std::rand() % 256, std::rand() % 256, std::rand() % 256)
 {
     setToolTip(QString("QColor(%1, %2, %3)\n%4")
               .arg(color.red()).arg(color.green()).arg(color.blue())
@@ -45,7 +45,7 @@ void OndeGrapheRessource::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     drag->setMimeData(mime);
 
     static int n = 0;
-    if (n++ > 2 && (qrand() % 3) == 0) {
+    if (n++ > 2 && (std::rand() % 3) == 0) {
         QImage image(":/images/head.png");
         mime->setImageData(image);
 

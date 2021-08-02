@@ -1,7 +1,3 @@
-#include <QDateTime>
-#include <QStringList>
-#include <QFile>
-#include <QTextStream>
 #include "qtjson.h"
 
 namespace QtJson {

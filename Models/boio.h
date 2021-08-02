@@ -44,4 +44,7 @@ struct IOAliases{
     bool _plugged ;
 };
 
+//pour chaque type de donnee je met en place des observer
+//pour chaque
+
 #endif // BOIO_H
