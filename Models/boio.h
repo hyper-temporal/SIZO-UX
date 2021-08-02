@@ -30,16 +30,6 @@ struct ModuleBO{
     bool canAddInputs;
 };
 
-//MIDIINPUTS modules with mlidi device name + all channel message (as signal)
-//CONSTANTES :  can define name and value, no input. one output
-//MATH OPERATION 1 or 2 input , (N inputs  outputs using expressions )
-//FILTERS (... from 1 pole to biquad, comb etc
-//REVERB (mutliple days  + lowpass, freeverb like
-//DYNAMICS (compressor, limiter, tanh
-//SAMPLERS (basic reader, to granular synth
-//OSCILLATORS (ice, shape , wavetable (DImensions)
-//ENVELOPPES (AR, DAR, DADSR , NEnv
-
 
 struct ModuleMAnager{
     std::string name;
