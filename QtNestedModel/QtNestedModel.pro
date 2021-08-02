@@ -18,7 +18,6 @@ HEADERS += \
     PianoRoll/drgantt.h \
     PianoRoll/ganttdata.h \
     PianoRoll/ganttmodel.h \
-    customctrls.h \
     damodel.h \
     dataobject.h \
     drenveloppe.h \
@@ -62,7 +61,6 @@ SOURCES += \
     PianoRoll/ganttdata.cpp \
     PianoRoll/ganttmodel.cpp \
     arrow.cpp \
-    customctrls.cpp \
     damodel.cpp \
     dataobject.cpp \
     diagramscene.cpp \

@@ -2,6 +2,7 @@
 
 #include <QPainter>
 #include <QMimeData>
+#include <math.h>
 
 
 DrGanttOptim::DrGanttOptim(QQuickItem *parent)
@@ -67,7 +68,7 @@ static int trouverIndexesAuPlusProche(
 //    Debug::toCoutWithLegend("mY",vy);
 
     int inx (-1);
-    double dist(INFINITY) ;
+    double dist(std::numeric_limits<double>::infinity()) ;
 
     for(uint i(0); i < ve.size(); i++){
         //        Debug::toCoutWithLegend("_____x", ve[i][0]);
@@ -80,7 +81,7 @@ static int trouverIndexesAuPlusProche(
         double distb = ((vy - relpy)/(ratioX_Y));
         //        Debug::toCoutWithLegend("dista",dista);
         //        Debug::toCoutWithLegend("distb",distb);
-        double ndist = sqrt((dista*dista) + (distb*distb));
+        double ndist = std::sqrt((dista*dista) + (distb*distb));
 //        Debug::toCoutWithLegend("ndist",ndist);
 //        Debug::toCoutWithLegend("maxdist",maxdist);
         if(ndist<maxdist && ndist <=  dist){
