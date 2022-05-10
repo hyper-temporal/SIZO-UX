@@ -12,8 +12,9 @@ Draw functionnalities include zooming and edit graph connections, add remove eve
 - tree view is used to show a json structure with , well tree view style
 - graph editor (edit connections, zoom in and out) 
 - piano roll (zoom, events edition)
+- shape(1D)/enveloppe(2D) editors
 - fader horizontal or vertical
-- rotary knobs with 
+- rotary knobs
 - simple action trigger
 - XY control .. and more
 
