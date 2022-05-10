@@ -16,7 +16,6 @@ DrGraphe::DrGraphe(QQuickItem *p)
     :QQuickPaintedItem(p),
       _vue(nullptr),
       _scene(nullptr),
-      _model(nullptr),
       _cursorSize(10.0) ,
       _moving(false),
       _line(nullptr),
@@ -29,18 +28,38 @@ DrGraphe::DrGraphe(QQuickItem *p)
     setAcceptedMouseButtons(Qt::AllButtons);
     setCursor(Qt::BlankCursor);
 
-    setModel(9);
+    GraphModel model ={
+        "I'm scared",
+        BlockDataList{
+            GraphBlockData{
+                "my names is", //std::string _name;
+                "my type is", //std::string _type;
+                {{"input 1", true},{"input 2", false},{"input 3", true}},//std::list<std::pair<std::string,bool>> _inputs;
+                {{"output 1", true},{"output 2", false},{"output 3", true}},//std::list<std::pair<std::string,bool>> _inputs;
+            },
+            GraphBlockData{
+                "my other name is", //std::string _name;
+                "my other type is", //std::string _type;
+                {{"input 1", true},{"input 2", false},{"input 3", true}},//std::list<std::pair<std::string,bool>> _inputs;
+                {{"output 1", true},{"output 2", false},{"output 3", true}},//std::list<std::pair<std::string,bool>> _inputs;
+            }
+        },
+        ConnectionList{}
+    };
+
+    setModel(model);
 
 
 }
 
 
-void DrGraphe::setModel(uint num){
+void DrGraphe::setModel(const GraphModel& model){
+    _model = model;
     if(_vue != nullptr)
         delete _vue;
     if(_scene != nullptr)
         delete _scene;
-    _scene = new DrGraphScene(*_model,this);
+    _scene = new DrGraphScene(_model,this);
     _vue = new DrGraphView(_scene);
 
     zoom(0.01);
@@ -149,10 +168,9 @@ void DrGraphe::mousePressEvent(QMouseEvent *me)
                 }
             }else if( p->type() == ZType::ZINPUT){
                 auto zob =  qgraphicsitem_cast<GraphBlockInput *>(p);
-                zob->invselection();
             }else if( p->type() == ZType::ZCONNECT){
                 auto zob =  qgraphicsitem_cast<DrGraphConnection *>(p);
-                zob->_selected = true;
+//                zob->setSelected(true);
             }else if( p->type() == ZType::ZOUTPUT){
                 auto sortie =  qgraphicsitem_cast<GraphBlockOutput *>(p);
                 sortie->invselection();

@@ -15,7 +15,7 @@ static QColor
 
 DrShape::DrShape(QQuickItem *p)
     :QQuickPaintedItem(p)
-    ,_datas()
+    ,_datas(testvec())
     ,_pixmax(16)
     ,_pointSelected(-1)
 {

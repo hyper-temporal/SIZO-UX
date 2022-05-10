@@ -13,6 +13,7 @@ DrGraphConnection::DrGraphConnection(
         GraphBlockInput *endItem,
         QGraphicsItem *parent)
     : QGraphicsLineItem(parent)
+    ,_selected(false)
     ,_output(startItem)
     ,_input(endItem)
     ,_color(QColor(80,80,200))

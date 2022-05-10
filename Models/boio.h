@@ -11,15 +11,15 @@ struct data2D{
 };
 
 
-struct ParamQueryBO{
-    std::string module,io;
-    bool operator==(const ParamQueryBO& otr)const{
-        return otr.module == module && otr.io == io ;
+struct ParamQuery{
+    std::string module,port;
+    bool operator==(const ParamQuery& otr)const{
+        return otr.module == module && otr.port == port ;
     }
 };
 
-struct Connexion_BO{
-    ParamQueryBO output,input;
+struct IOLink{
+    ParamQuery output,input;
 };
 
 struct ModuleBO{
@@ -39,12 +39,9 @@ struct ModuleMAnager{
 struct IOAliases{
 
     std::string _name     ;
-    std::string _nick  ;
-    bool _actif   ;
+    std::string _nickname  ;
+    bool _active   ;
     bool _plugged ;
 };
-
-//pour chaque type de donnee je met en place des observer
-//pour chaque
 
 #endif // BOIO_H

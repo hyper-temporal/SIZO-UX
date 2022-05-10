@@ -23,6 +23,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Widgets Charts Qml REQU
 
 add_subdirectory(Models)
 add_subdirectory(QtJson)
+#add_subdirectory(OXI_ENGINE) #for library sub project inclusion, reference (main to include all sub libs) project here
 add_subdirectory(OXI_QML)
 
 

@@ -84,7 +84,7 @@ QRectF GraphBlock::boundingRect() const
 //}
 
 GraphBlockIO::GraphBlockIO(
-        ParamQueryBO q,
+        ParamQuery q,
         int offsy,
          const std::pair<std::string, bool> &l,
         QGraphicsObject *parent)
@@ -293,13 +293,7 @@ const std::string& GraphBlock::typeObjet(){
     return _type;
 
 }
-Supprimable::Supprimable()
-    :_selected(false)
-{}
 
-Supprimable::~Supprimable(){
-
-}
 
 GraphBlockPart::~GraphBlockPart(){
 
@@ -333,23 +327,24 @@ GraphBlockMIDIDevice::~GraphBlockMIDIDevice(){
 
 void GraphBlockInput::selection(bool st){
     if(_arrow != nullptr)
-        _arrow->_selected = st;
+        _arrow->setSelected( st );
 }
 
 void GraphBlockInput::invselection(){
-    if(_arrow != nullptr)
-        _arrow->_selected = !_arrow->_selected;
+    if(_arrow != nullptr){
+        _arrow->inverseSelected();
+    }
 }
 
 
 void GraphBlockOutput::selection(bool st){
     for(auto a : _arrows){
-        a->_selected = st;
+        a->setSelected(st);
     }
 }
 
 void GraphBlockOutput::invselection(){
     for(auto a : _arrows){
-        a->_selected = !a->_selected;
+        a->inverseSelected();
     }
 }

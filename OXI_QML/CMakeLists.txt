@@ -30,9 +30,15 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 include_directories(
     ../Models
     ../QtJson
+#    ../OXI_ENGINE/OXI_HELPERS/include
+#    ../OXI_ENGINE/OXI_DATA/include
     )
 
 set(PROJECT_SOURCES
+
+    rotation.h
+    rotation.cpp
+
     arrow.cpp
     damodel.cpp
     damodel.h
@@ -213,7 +219,8 @@ target_link_libraries(OXI_CLIENT
   Qt${QT_VERSION_MAJOR}::Widgets
   Qt${QT_VERSION_MAJOR}::Charts
   Qt${QT_VERSION_MAJOR}::Qml
-
+#  OXI_DATA
+#  OXI_HELPERS
   )
 
 

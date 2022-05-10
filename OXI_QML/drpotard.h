@@ -4,6 +4,7 @@
 
 #include <QtQuick/QQuickPaintedItem>
 #include "drvaleur.h"
+#include <rotation.h>
 
 class DrPotard
         :public DrValeur

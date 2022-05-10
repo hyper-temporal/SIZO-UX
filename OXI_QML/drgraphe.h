@@ -33,12 +33,12 @@ public:
     DrGraphe(
             QQuickItem *p=nullptr);
     virtual ~DrGraphe();
-    Q_INVOKABLE void setModel(uint num);
     Q_INVOKABLE void addCentreX(double v);
     Q_INVOKABLE void addCentreY(double v);
     Q_INVOKABLE void zoom(double v);
     Q_INVOKABLE void deleteSelection();
 
+    void setModel(const GraphModel& num);
     void setViseur(double v);
     double getViseur()const;
     void setFontSize(int v);
@@ -81,7 +81,7 @@ private:
     QGraphicsItem * getPlugOrDrag(QPoint &pos);
     DrGraphView *_vue;
     DrGraphScene * _scene;
-    GraphModel * _model;
+    GraphModel _model;
 
     bool _hoveredAccepted;
     double _cursorSize;

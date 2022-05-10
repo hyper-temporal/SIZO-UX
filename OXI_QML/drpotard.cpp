@@ -4,6 +4,7 @@
 #include <QPainter>
 #include <QMimeData>
 
+
 DrPotard::DrPotard(QQuickItem *parent)
     :DrValeur(parent)
 {
@@ -52,8 +53,8 @@ void DrPotard::coord2Value(int mx, int my)
 {
     auto cx = _cx * width();
     auto cy = _cy * height();
-//    auto a =  Geometrie::angle(cx,cy,mx,my);
-//    _value = Geometrie::valeurRotary(a,_aL,_aR,_sens,_dist,_centre);
+    auto a =  Geometrie::angle(cx,cy,mx,my);
+    _value = Geometrie::valeurRotary(a,_aL,_aR,_sens,_dist,_centre);
 
 }
 

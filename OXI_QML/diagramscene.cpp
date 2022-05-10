@@ -59,7 +59,7 @@ static GraphBlockOutput * getOperationLinkedBlock(
 
 
 static bool connectionExists(
-        const Connexion_BO* conn,
+        const IOLink* conn,
         std::list<DrGraphConnection *>conns)
 {
 
@@ -73,7 +73,7 @@ static bool connectionExists(
 }
 
 static DrGraphConnection* creerConnection(
-        Connexion_BO q,
+        IOLink q,
         GraphBlockOutput * bout ,
         GraphBlockInput * bin  )
 {
@@ -89,7 +89,7 @@ static DrGraphConnection* creerConnection(
     return nullptr;
 }
 static std::pair<GraphBlockOutput *,GraphBlockInput * > tryConnect(
-        const Connexion_BO c,
+        const IOLink c,
         std::list<GraphBlock *>& blocs
         )
 {
@@ -98,9 +98,9 @@ static std::pair<GraphBlockOutput *,GraphBlockInput * > tryConnect(
     auto modO = getModule(blocs,c.output.module);
     auto modI = getModule(blocs,c.input.module);
     if(modO != nullptr)
-        bin = modO->getInputBlock(c.input.io);
+        bin = modO->getInputBlock(c.input.port);
     if(modI != nullptr)
-        bout = modI->getOutputBlock(c.input.io);
+        bout = modI->getOutputBlock(c.input.port);
     return {bout,bin};
 }
 
@@ -113,8 +113,8 @@ DrGraphScene::DrGraphScene(
     ,_model(m)
     ,_ghost()
 {
-    std::list<ParamQueryBO> outputnotfound;
-    std::list<ParamQueryBO> inputnotfound;
+    std::list<ParamQuery> outputnotfound;
+    std::list<ParamQuery> inputnotfound;
     line = 0;
     textItem = 0;
     myItemColor = Qt::white;
@@ -127,7 +127,7 @@ DrGraphScene::DrGraphScene(
         addItem(it);
     }
     //connections simples
-    for( Connexion_BO& co : _model._connections){
+    for( IOLink& co : _model._connections){
         auto it = tryConnect(co, _blocks);
         auto bout = it.first;
         auto bin = it.second;
@@ -148,7 +148,7 @@ DrGraphScene::DrGraphScene(
 
 
     //je reexecute la procedure de connection car les op
-    for( const Connexion_BO& co : _model._connections)
+    for( const IOLink& co : _model._connections)
     {
         if(!connectionExists(&co,_conns)){
             auto it = tryConnect(co , _blocks);
@@ -172,13 +172,13 @@ DrGraphScene::DrGraphScene(
     }
     for(auto& str : outputnotfound){
         Logger::log().error("le signal *** "
-                       + (str.module)+ (str.io)
+                       + (str.module)+ (str.port)
                        + " *** doit etre créé ou délégué a un graph PRE!"
                        );
     }
     for(auto& str : inputnotfound){
         Logger::log().error("entree inexistante *** "
-                      + (str.module)+ (str.io)
+                      + (str.module)+ (str.port)
                        + " *** "
                        );
     }

@@ -6,7 +6,7 @@
 #include <boio.h>
 
 
-typedef  std::list<Connexion_BO>  ConnectionList;
+typedef  std::list<IOLink>  ConnectionList;
 typedef  std::pair<std::string&,double&> ParameterInterne;
 
 //pour construire un prototype: une liste de GraphBlockData + un name

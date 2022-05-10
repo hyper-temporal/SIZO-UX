@@ -13,11 +13,11 @@ QVariant IOModel::roleToData(const IOAliases &v,int role)const{
     if (role ==NomRole)
         return QString::fromStdString(v._name);
     else if (role == AliasRole)
-        return QString::fromStdString(v._nick);
+        return QString::fromStdString(v._nickname);
     else if (role == PluggedRole)
         return QVariant::fromValue(v._plugged);
     else if (role == UsedRole)
-        return QVariant::fromValue(v._actif);
+        return QVariant::fromValue(v._active);
     return QVariant();
 }
 
@@ -37,7 +37,7 @@ void IOModel::changerAlias(int inx, const QVariant &value){
     qInfo()<< "ROW" << inx;
     if(inx <0 || inx >= (int)_collec.size())return ;
     IOAliases &item = _collec[inx];
-    item._nick = value.toString().toStdString();
+    item._nickname = value.toString().toStdString();
     auto i = index(inx,0);
     emit dataChanged(i,i);
 }
@@ -46,7 +46,7 @@ void IOModel::etatIO(int inx, bool st){
     qInfo()<< "ROW" << inx;
     if(inx <0 || inx >= (int)_collec.size())return ;
     IOAliases &item = _collec[inx];
-    item._actif = st;
+    item._active = st;
     auto i = index(inx,0);
     emit dataChanged(i,i);
 }

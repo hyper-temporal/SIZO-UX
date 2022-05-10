@@ -21,14 +21,6 @@ enum ZType
     ZCONNECT = ZOUTPUT+1
 };
 
-class Supprimable
-{
-public:
-    bool _selected;
-public:
-    virtual ~Supprimable();
-    Supprimable();
-};
 
 class GraphBlockPart
         :public QGraphicsObject
@@ -82,34 +74,37 @@ class GraphBlockIO
 public:
     virtual ~GraphBlockIO();
     GraphBlockIO(
-            ParamQueryBO q,
+            ParamQuery q,
             int offsy,
             const std::pair<std::string,bool>  &l,
             QGraphicsObject *parent);
     const QString& getLabel(){return _label;}
     virtual void selection(bool)=0;
     virtual void invselection()=0;
-    const ParamQueryBO& query(){return _query;}
+    const ParamQuery& query(){return _query;}
 protected:
     QString _label;
     bool _hasconnector;
     int _offsy;
 private:
-    ParamQueryBO _query;
+    ParamQuery _query;
 };
 
 
 class GraphBlockInput
         : public GraphBlockIO
 {
+    bool _selected;
+
 public:
     virtual ~GraphBlockInput();
     GraphBlockInput(
-            ParamQueryBO q,
+            ParamQuery q,
             int ofy,
             std::pair<const std::string&,bool> l,
             QGraphicsObject *p)
         :GraphBlockIO(q,ofy,l,p)
+        ,_selected(false)
     {}
     int type() const final;
     QRectF boundingRect() const final;
@@ -133,7 +128,7 @@ class GraphBlockOutput
 public:
     virtual ~GraphBlockOutput();
     GraphBlockOutput(
-            ParamQueryBO q,
+            ParamQuery q,
             int ofy,
              const std::pair<std::string, bool> &l,
             QGraphicsObject *p)
@@ -159,7 +154,6 @@ private:
 
 class GraphBlock
         :public GraphBlockPart
-        ,public Supprimable
 {
 public:
     virtual ~GraphBlock();
