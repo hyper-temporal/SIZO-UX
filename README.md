@@ -29,6 +29,9 @@ then build and run :)
 - add the real time thread safe mecanism to update and report UI
 
 
+
+![some hypothetical very minimal ui - screenshot](https://github.com/camillebassuel/SIZO-UX/blob/main/ux.png?raw=true "qgraphicscene from qml - basical components - screenshot")
+
 ![graph & connections screenshot](https://github.com/camillebassuel/SIZO-UX/blob/main/graph.png
  "qgraphicscene from qml - small graph and connection - screenshot")
 
