@@ -1,4 +1,4 @@
-# OXI-client
+# SIZO-UX
 a set of gui components created to ultimately integrate audio workflows
 Every components can be created from QML (so js is also available and should be considered)
 TODO: 
