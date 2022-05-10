@@ -28,4 +28,8 @@ then build and run :)
 - allow user to adapt pianoroll and graph to it's own pipeline (graph and event based)
 - add the real time thread safe mecanism to update and report UI
 
+
+![graph & connections screenshot](https://github.com/camillebassuel/SIZO-UX/blob/main/graph.png
+ "qgraphicscene from qml - small graph and connection - screenshot")
+
 ![main selecter screenshot](https://github.com/camillebassuel/SIZO-UX/blob/main/main_selecter.png "qgraphicscene from qml - main selecter screenshot")
