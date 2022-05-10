@@ -2,6 +2,7 @@
 *.d
 
 #qt locals
+*.user
 *.pro.user
 
 # Compiled Object files
